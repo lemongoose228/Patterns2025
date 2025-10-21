@@ -6,5 +6,6 @@
         "correspondent_account": "30101810000",
         "BIK": "044525225",
         "ownership_type": "ООО"
-    }
+    },
+    "response_format": "Json"
 }
