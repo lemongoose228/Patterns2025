@@ -6,5 +6,6 @@
         "BIK": "044525225",
         "name": "Ромашка",
         "ownership_type": "ООО"
-    }
+    },
+    "response_format": "Json"
 }
