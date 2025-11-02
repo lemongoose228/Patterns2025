@@ -1,11 +1,12 @@
 {
     "company": {
-        "INN": 123456789012,
-        "account": "40702810000",
-        "correspondent_account": "30101810000",
-        "BIK": "044525225",
         "name": "Ромашка",
-        "ownership_type": "ООО"
+        "account": 40702810000,
+        "correspondent_account": 30101810000,
+        "BIK": 44525225,
+        "ownership_type": "ООО",
+        "INN": 123456789012
     },
-    "response_format": "Json"
+    "response_format": "CSV",
+    "first_start": false
 }
