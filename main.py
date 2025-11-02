@@ -6,6 +6,7 @@ from src.start_service import StartService
 from src.logics.factory_entities import FactoryEntities
 from src.models.settings import Settings
 from src.core.common import common
+from src.core.validator import Validator, ArgumentException
 
 app = connexion.FlaskApp(__name__)
 
@@ -66,22 +67,105 @@ def get_data(model_type: str, format_type: str):
         result = formatter.build(format_type, data)
         
         # Возвращаем результат в соответствующем Content-Type
-        content_types = {
-            "csv": "text/csv",
-            "markdown": "text/markdown",
-            "json": "application/json",
-            "xml": "application/xml"
-        }
-        
         return Response(
-            result,
-            content_type=content_types.get(format_type, "text/plain")
+            status=200,
+            response=json.dumps({"result": result}),
+            content_type="application/json"
         )
         
     except Exception as e:
         return {"error": str(e)}, 500
 
+"""
+Получить список всех рецептов в JSON формате
+"""
+@app.route("/api/recipes", methods=['GET'])
+def get_recipes():
+    try:
+        # Получаем все рецепты
+        recipes = list(start_service.recipes.values())
+        
+        # Создаем JSON форматтер
+        formatter = factory.create("Json")
+        result = formatter.build("json", recipes)
+    
+        
+        return Response(
+            status=200,
+            response=json.dumps({
+                "success": True,
+                "count": len(recipes),
+                "recipes": result
+            }),
+            content_type="application/json"
+        )
+        
+    except Exception as e:
+        return Response(
+            status=500,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
 
+"""
+Получить конкретный рецепт по ID в JSON формате
+"""
+@app.route("/api/recipes/<recipe_id>", methods=['GET'])
+def get_recipe(recipe_id: str):
+    try:
+        # Валидация ID
+        Validator.validate(recipe_id, str, name="recipe_id")
+        
+        # Ищем рецепт по ID
+        data = list(start_service.data["recipe"].values())
+        
+        recipe = list(filter(lambda recipe: recipe.id == recipe_id, data))
+        
+        if not recipe:
+            return Response(
+                status=404,
+                response=json.dumps({
+                    "success": False,
+                    "error": f"Рецепт с ID '{recipe_id}' не найден"
+                }),
+                content_type="application/json"
+            )
+        
+        # Создаем JSON форматтер
+        formatter = factory.create("Json")
+        result = formatter.build("json", [recipe[0]])
+        
+        
+        return Response(
+            status=200,
+            response=json.dumps({
+                "success": True,
+                "recipe": result
+            }),
+            content_type="application/json"
+        )
+        
+    except ArgumentException as e:
+        return Response(
+            status=400,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
+    except Exception as e:
+        return Response(
+            status=500,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
