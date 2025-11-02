@@ -132,7 +132,12 @@ class SettingsManager:
         if "response_format" in data:
             self.__settings.response_format = data["response_format"]
         
+        # Обработка настройки первого старта
+        if "first_start" in data:
+            self.__settings.first_start = data["first_start"]
+        
         return True
+
 
     def default_settings(self):
         """
@@ -148,3 +153,4 @@ class SettingsManager:
         self.__settings.company.ownership_type = "ООО"
         self.__settings.company.INN = "123456789012"
         self.__settings.response_format = "CSV"
+        self.__settings.first_start = True

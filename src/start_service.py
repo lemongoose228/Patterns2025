@@ -4,6 +4,10 @@ from src.repository import Repository
 from src.models.unit_measurement_model import UnitMeasurement
 from src.models.nomenclature_model import NomenclatureModel
 from src.models.recipe_model import RecipeModel
+from src.models.storage_model import StorageModel
+from src.models.transaction_model import TransactionModel
+from datetime import datetime, timedelta
+import random
 
 class StartService():
     __repository: Repository = Repository()
@@ -13,6 +17,8 @@ class StartService():
         self.data[Repository.group_nomenclature_key] = {}
         self.data[Repository.nomenclature_key] = {}
         self.data[Repository.recipe_key] = {}
+        self.data[Repository.storage_key] = {}
+        self.data[Repository.transaction_key] = {}
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):
@@ -35,6 +41,7 @@ class StartService():
     '''
     def __default_create_group_nomenclature(self):
         ingredients = GroupNomenclatureModel()
+        ingredients.name = "Ингредиенты"
         self.groups_nomenclature["ingredients"] = ingredients
 
 
@@ -109,6 +116,45 @@ class StartService():
         return cookies
 
     '''
+    Метод для генерации складов
+    '''
+    def __default_create_storages(self):
+        main_storage = StorageModel("Основной склад")
+        reserve_storage = StorageModel("Резервный склад")
+        
+        self.storages["main"] = main_storage
+        self.storages["reserve"] = reserve_storage
+
+    '''
+    Метод для генерации тестовых транзакций
+    '''
+    def __default_create_transactions(self):
+        # Создаем тестовые транзакции за последние 30 дней
+        base_date = datetime.now() - timedelta(days=30)
+        
+        nomenclatures = list(self.nomenclatures.values())
+        storages = list(self.storages.values())
+        gramm = self.units_measure["gramm"]
+        
+        for i in range(50):  # Уменьшил количество транзакций для наглядности
+            transaction_date = base_date + timedelta(days=random.randint(0, 30))
+            nomenclature = random.choice(nomenclatures)
+            storage = random.choice(storages)
+            quantity = random.randint(100, 1000)
+            transaction_type = random.choice(["in", "out"])
+            
+            transaction = TransactionModel(
+                date=transaction_date,
+                nomenclature=nomenclature,
+                storage=storage,
+                quantity=quantity,
+                unit_measurement=gramm,
+                transaction_type=transaction_type
+            )
+            
+            self.transactions[transaction.id] = transaction
+
+    '''
     Метод для генерации эталонных рецептов
     '''
     def __default_create_recipes(self):
@@ -142,7 +188,9 @@ class StartService():
         self.__default_create_units_measure()
         self.__default_create_group_nomenclature()
         self.__default_create_nomenclature()
+        self.__default_create_storages()
         self.__default_create_recipes()
+        self.__default_create_transactions()
 
     '''
     Стартовый набор данных
@@ -170,3 +218,13 @@ class StartService():
     @property
     def recipes(self):
         return self.data[Repository.recipe_key]
+    
+    """Список складов"""
+    @property
+    def storages(self):
+        return self.data[Repository.storage_key]
+    
+    """Список транзакций"""
+    @property
+    def transactions(self):
+        return self.data[Repository.transaction_key]
