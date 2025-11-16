@@ -9,7 +9,7 @@ class AbstractModel(ABC):
     @abstractmethod
     def __init__(self):
         super().__init__()
-        self.__id: str = uuid.uuid4()
+        self.__id: str = str(uuid.uuid4())
 
 
     @property
