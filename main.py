@@ -3,6 +3,8 @@ from flask import request, Response
 import json
 from datetime import datetime
 
+from src.core.prototype import Prototype
+from src.dtos.filter_dto import FilterDto
 from src.start_service import StartService
 from src.logics.factory_entities import FactoryEntities
 from src.models.settings import Settings
@@ -30,7 +32,6 @@ try:
         start_service.start()
         settings.first_start = False
 except Exception as e:
-    print(f"Ошибка загрузки настроек: {e}")
     settings = Settings()
     start_service.start()
 
@@ -335,6 +336,209 @@ def export_all_data():
             }),
             content_type="application/json"
         )
+
+
+@app.route("/api/data/<model_type>/<format_type>/filter", methods=['POST'])
+def get_filtered_data(model_type: str, format_type: str):
+    try:
+        # Получаем данные из тела запроса
+        request_data = request.get_json()
+        
+        if not request_data or 'filters' not in request_data:
+            return Response(
+                status=400,
+                response=json.dumps({
+                    "success": False,
+                    "error": "Не указаны фильтры в теле запроса"
+                }),
+                content_type="application/json"
+            )
+        
+        # Создаем DTO фильтры
+        filters = [FilterDto.from_dict(f) for f in request_data['filters']]
+        
+        # Получаем данные в зависимости от типа модели
+        data_map = {
+            "units": list(start_service.units_measure.values()),
+            "groups": list(start_service.groups_nomenclature.values()),
+            "nomenclatures": list(start_service.nomenclatures.values()),
+            "recipes": list(start_service.recipes.values()),
+            "storages": list(start_service.storages.values()),
+            "transactions": list(start_service.transactions.values())
+        }
+        
+        if model_type not in data_map:
+            return Response(
+                status=400,
+                response=json.dumps({
+                    "success": False,
+                    "error": f"Неизвестный тип модели: {model_type}"
+                }),
+                content_type="application/json"
+            )
+        
+        data = data_map[model_type]
+        
+        # Применяем фильтрацию через прототип
+        prototype = Prototype(data)
+        filtered_data = Prototype.filter(data, filters)
+        
+        # Создаем форматтер
+        format_map = {
+            "csv": "CSV",
+            "markdown": "Markdown", 
+            "json": "Json",
+            "xml": "XML"
+        }
+        
+        if format_type not in format_map:
+            return Response(
+                status=400,
+                response=json.dumps({
+                    "success": False,
+                    "error": f"Неизвестный формат: {format_type}"
+                }),
+                content_type="application/json"
+            )
+        
+        formatter = factory.create(format_map[format_type])
+        result = formatter.build(format_type, filtered_data)
+        
+        return Response(
+            status=200,
+            response=json.dumps({
+                "success": True,
+                "count": len(filtered_data),
+                "result": result
+            }),
+            content_type="application/json"
+        )
+        
+    except Exception as e:
+        return Response(
+            status=500,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
+
+
+"""
+POST - Отчет Оборотно-сальдовая ведомость с фильтрацией
+"""
+@app.route("/api/reports/turnover/filter", methods=['POST'])
+def get_filtered_turnover_report():
+    try:
+        # Получаем параметры из тела запроса
+        request_data = request.get_json()
+        
+        if not request_data:
+            return Response(
+                status=400,
+                response=json.dumps({
+                    "success": False,
+                    "error": "Не указаны параметры в теле запроса"
+                }),
+                content_type="application/json"
+            )
+        
+        # Получаем обязательные параметры
+        start_date_str = request_data.get('start_date')
+        end_date_str = request_data.get('end_date')
+        storage_id = request_data.get('storage_id')
+        filters = request_data.get('filters', [])
+        
+        # Валидация обязательных параметров
+        if not start_date_str or not end_date_str:
+            return Response(
+                status=400,
+                response=json.dumps({
+                    "success": False,
+                    "error": "Обязательные параметры: start_date, end_date"
+                }),
+                content_type="application/json"
+            )
+        
+        # Парсинг дат
+        try:
+            start_date = datetime.fromisoformat(start_date_str)
+            end_date = datetime.fromisoformat(end_date_str)
+        except ValueError:
+            return Response(
+                status=400,
+                response=json.dumps({
+                    "success": False,
+                    "error": "Неверный формат даты. Используйте ISO формат: YYYY-MM-DDTHH:MM:SS"
+                }),
+                content_type="application/json"
+            )
+        
+        # Поиск склада если указан
+        storage = None
+        if storage_id:
+            storage = start_service.storages.get(storage_id)
+            if not storage:
+                storage_list = list(start_service.storages.values())
+                storage = next((s for s in storage_list if s.id == storage_id), None)
+            
+            if not storage:
+                return Response(
+                    status=404,
+                    response=json.dumps({
+                        "success": False,
+                        "error": f"Склад с ID '{storage_id}' не найден"
+                    }),
+                    content_type="application/json"
+                )
+        
+        # Генерация отчета
+        report_data = turnover_service.generate_turnover_report(start_date, end_date, storage)
+        
+        # Применяем фильтрацию если указаны фильтры
+        if filters:
+            filter_dtos = [FilterDto.from_dict(f) for f in filters]
+            prototype = Prototype(report_data)
+            filtered_report_data = Prototype.filter(report_data, filter_dtos)
+        else:
+            filtered_report_data = report_data
+        
+        return Response(
+            status=200,
+            response=json.dumps({
+                "success": True,
+                "report": {
+                    "start_date": start_date.isoformat(),
+                    "end_date": end_date.isoformat(),
+                    "storage": storage.name if storage else "Все склады",
+                    "filtered_count": len(filtered_report_data),
+                    "total_count": len(report_data),
+                    "data": filtered_report_data
+                }
+            }),
+            content_type="application/json"
+        )
+        
+    except ArgumentException as e:
+        return Response(
+            status=400,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
+    except Exception as e:
+        return Response(
+            status=500,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
