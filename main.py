@@ -426,7 +426,7 @@ def get_filtered_data(model_type: str, format_type: str):
 
 
 """
-POST - Отчет Оборотно-сальдовая ведомость с фильтрацией
+POST - Отчет Оборотно-сальдовая ведомость с фильтрацией через прототип
 """
 @app.route("/api/reports/turnover/filter", methods=['POST'])
 def get_filtered_turnover_report():
@@ -448,7 +448,7 @@ def get_filtered_turnover_report():
         start_date_str = request_data.get('start_date')
         end_date_str = request_data.get('end_date')
         storage_id = request_data.get('storage_id')
-        filters = request_data.get('filters', [])
+        filters_data = request_data.get('filters', [])
         
         # Валидация обязательных параметров
         if not start_date_str or not end_date_str:
@@ -493,16 +493,11 @@ def get_filtered_turnover_report():
                     content_type="application/json"
                 )
         
-        # Генерация отчета
-        report_data = turnover_service.generate_turnover_report(start_date, end_date, storage)
+        # Преобразуем фильтры в DTO
+        filters = [FilterDto.from_dict(f) for f in filters_data]
         
-        # Применяем фильтрацию если указаны фильтры
-        if filters:
-            filter_dtos = [FilterDto.from_dict(f) for f in filters]
-            prototype = Prototype(report_data)
-            filtered_report_data = Prototype.filter(report_data, filter_dtos)
-        else:
-            filtered_report_data = report_data
+        # Генерация отчета с использованием прототипа
+        report_data = turnover_service.generate_turnover_report(start_date, end_date, storage, filters)
         
         return Response(
             status=200,
@@ -512,9 +507,8 @@ def get_filtered_turnover_report():
                     "start_date": start_date.isoformat(),
                     "end_date": end_date.isoformat(),
                     "storage": storage.name if storage else "Все склады",
-                    "filtered_count": len(filtered_report_data),
-                    "total_count": len(report_data),
-                    "data": filtered_report_data
+                    "filters_applied": len(filters),
+                    "data": report_data
                 }
             }),
             content_type="application/json"
