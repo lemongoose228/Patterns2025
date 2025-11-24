@@ -3,6 +3,7 @@ from flask import request, Response
 import json
 from datetime import datetime
 
+from src.logics.balance_service import BalanceService
 from src.core.prototype import Prototype
 from src.dtos.filter_dto import FilterDto
 from src.start_service import StartService
@@ -40,6 +41,7 @@ factory = FactoryEntities(settings)
 # Инициализация сервисов
 turnover_service = TurnoverReportService(start_service)
 export_service = ExportService(start_service)
+balance_service = BalanceService(start_service, settings_manager)
 
 """
 Проверить доступность REST API
@@ -532,6 +534,177 @@ def get_filtered_turnover_report():
             }),
             content_type="application/json"
         )
+
+
+"""
+GET - Получить текущую дату блокировки
+"""
+@app.route("/api/settings/blocking-date", methods=['GET'])
+def get_blocking_date():
+    try:
+        blocking_date = settings_manager.settings.blocking_date
+        
+        return Response(
+            status=200,
+            response=json.dumps({
+                "success": True,
+                "blocking_date": blocking_date.isoformat() if blocking_date else None
+            }),
+            content_type="application/json"
+        )
+        
+    except Exception as e:
+        return Response(
+            status=500,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
+
+"""
+POST - Установить дату блокировки
+"""
+@app.route("/api/settings/blocking-date", methods=['POST'])
+def set_blocking_date():
+    try:
+        request_data = request.get_json()
+        
+        if not request_data or 'blocking_date' not in request_data:
+            return Response(
+                status=400,
+                response=json.dumps({
+                    "success": False,
+                    "error": "Не указана дата блокировки в теле запроса"
+                }),
+                content_type="application/json"
+            )
+        
+        blocking_date_str = request_data['blocking_date']
+        
+        try:
+            if blocking_date_str:
+                blocking_date = datetime.fromisoformat(blocking_date_str)
+            else:
+                blocking_date = None
+        except ValueError:
+            return Response(
+                status=400,
+                response=json.dumps({
+                    "success": False,
+                    "error": "Неверный формат даты. Используйте ISO формат: YYYY-MM-DDTHH:MM:SS"
+                }),
+                content_type="application/json"
+            )
+        
+        # Устанавливаем дату блокировки
+        settings_manager.settings.blocking_date = blocking_date
+        
+        # Сохраняем настройки
+        settings_manager.save()
+        
+        # Если установлена дата блокировки, пересчитываем обороты
+        if blocking_date:
+            balance_service.calculate_turnovers_until_blocking_date()
+        
+        return Response(
+            status=200,
+            response=json.dumps({
+                "success": True,
+                "message": f"Дата блокировки установлена: {blocking_date_str}" if blocking_date_str else "Дата блокировки сброшена",
+                "blocking_date": blocking_date_str
+            }),
+            content_type="application/json"
+        )
+        
+    except Exception as e:
+        return Response(
+            status=500,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
+
+"""
+GET - Получить остатки на указанную дату
+Параметры: date (обязательный), storage_id (опционально)
+"""
+@app.route("/api/reports/balances", methods=['GET'])
+def get_balances_report():
+    try:
+        date_str = request.args.get('date')
+        storage_id = request.args.get('storage_id')
+        
+        if not date_str:
+            return Response(
+                status=400,
+                response=json.dumps({
+                    "success": False,
+                    "error": "Обязательный параметр: date"
+                }),
+                content_type="application/json"
+            )
+        
+        # Парсинг даты
+        try:
+            target_date = datetime.fromisoformat(date_str)
+        except ValueError:
+            return Response(
+                status=400,
+                response=json.dumps({
+                    "success": False,
+                    "error": "Неверный формат даты. Используйте ISO формат: YYYY-MM-DDTHH:MM:SS"
+                }),
+                content_type="application/json"
+            )
+        
+        # Поиск склада если указан
+        storage = None
+        if storage_id:
+            storage = start_service.storages.get(storage_id)
+            if not storage:
+                storage_list = list(start_service.storages.values())
+                storage = next((s for s in storage_list if s.id == storage_id), None)
+            
+            if not storage:
+                return Response(
+                    status=404,
+                    response=json.dumps({
+                        "success": False,
+                        "error": f"Склад с ID '{storage_id}' не найден"
+                    }),
+                    content_type="application/json"
+                )
+        
+        # Получаем отчет по остаткам
+        report_data = balance_service.get_balance_report(target_date, storage)
+        
+        return Response(
+            status=200,
+            response=json.dumps({
+                "success": True,
+                "report": {
+                    "calculation_date": target_date.isoformat(),
+                    "storage": storage.name if storage else "Все склады",
+                    "data": report_data
+                }
+            }),
+            content_type="application/json"
+        )
+        
+    except Exception as e:
+        return Response(
+            status=500,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
+
 
 
 if __name__ == '__main__':

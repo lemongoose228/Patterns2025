@@ -8,5 +8,6 @@
         "INN": 123456789012
     },
     "response_format": "CSV",
-    "first_start": false
+    "first_start": false,
+    "blocking_date": "2024-01-01T00:00:00"
 }

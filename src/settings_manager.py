@@ -1,3 +1,4 @@
+from datetime import datetime
 from src.core.validator import ArgumentException, OperationException, Validator
 from src.models.settings import Settings
 from src.models.company_model import CompanyModel
@@ -135,8 +136,41 @@ class SettingsManager:
         # Обработка настройки первого старта
         if "first_start" in data:
             self.__settings.first_start = data["first_start"]
+
+        if "blocking_date" in data and data["blocking_date"]:
+            try:
+                self.__settings.blocking_date = datetime.fromisoformat(data["blocking_date"])
+            except ValueError:
+                self.__settings.blocking_date = None
         
         return True
+
+
+    def save(self) -> bool:
+        """
+        Сохранить настройки в файл
+        """
+        try:
+            data = {
+                "company": {
+                    "name": self.__settings.company.name,
+                    "account": self.__settings.company.account,
+                    "correspondent_account": self.__settings.company.correspondent_account,
+                    "BIK": self.__settings.company.BIK,
+                    "ownership_type": self.__settings.company.ownership_type,
+                    "INN": self.__settings.company.INN
+                },
+                "response_format": self.__settings.response_format,
+                "first_start": self.__settings.first_start,
+                "blocking_date": self.__settings.blocking_date.isoformat() if self.__settings.blocking_date else None
+            }
+            
+            with open(self.__file_name, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            
+            return True
+        except Exception:
+            return False
 
 
     def default_settings(self):
