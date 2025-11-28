@@ -1,6 +1,9 @@
+from datetime import datetime
 from src.core.validator import ArgumentException, OperationException, Validator
 from src.models.settings import Settings
 from src.models.company_model import CompanyModel
+from src.logics.convert_factory import ConvertFactory
+from src.logics.response_json import ResponseJson
 import json
 import os
 
@@ -8,27 +11,26 @@ import os
 class SettingsManager:
     """
     Менеджер настроек приложения.
-    
+
     Реализует паттерн Singleton для обеспечения единственного экземпляра менеджера.
     Обеспечивает загрузку, сохранение и управление настройками приложения из JSON файла.
-    
+
     Attributes:
         __file_name (str): Полный путь к файлу настроек
         __settings (Settings): Объект с текущими настройками приложения
     """
-    
-    __file_name:str = ""
-    
+
+    __file_name: str = ""
 
     def __new__(cls, file_name: str):
         """
         Реализация паттерна Singleton.
-        
+
         Гарантирует создание только одного экземпляра SettingsManager.
-        
+
         Args:
             file_name (str): Путь к файлу настроек
-            
+
         Returns:
             SettingsManager: Единственный экземпляр класса SettingsManager
         """
@@ -40,7 +42,7 @@ class SettingsManager:
     def __init__(self, file_name: str):
         """
         Инициализирует менеджер настроек.
-        
+
         Args:
             file_name (str): Путь к файлу настроек
         """
@@ -52,18 +54,17 @@ class SettingsManager:
     def settings(self) -> Settings:
         """
         Получить текущие настройки приложения.
-        
+
         Returns:
             Settings: Объект с текущими настройками приложения
         """
         return self.__settings
-    
 
     @property
     def file_name(self) -> str:
         """
         Получить путь к файлу настроек.
-        
+
         Returns:
             str: Полный путь к файлу настроек
         """
@@ -73,29 +74,28 @@ class SettingsManager:
     def file_name(self, value: str):
         """
         Установить путь к файлу настроек.
-        
+
         Проверяет существование файла перед установкой пути.
-        
+
         Args:
             value (str): Путь к файлу настроек
-            
+
         Raises:
             ArgumentException: Если файл не существует или путь некорректен
         """
         Validator.validate(value, str)
-        full_file_name = os.path.abspath(value)        
+        full_file_name = os.path.abspath(value)
         if os.path.exists(full_file_name):
             self.__file_name = full_file_name.strip()
         else:
             raise ArgumentException(f'Не найден файл настроек {full_file_name}')
 
-    
     def load(self) -> bool:
         """
         Загрузить настройки из файла.
-        
+
         Читает JSON файл и преобразует его данные в объект Settings.
-        
+
         Returns:
             bool: True если загрузка успешна, False в случае ошибки
         """
@@ -106,15 +106,14 @@ class SettingsManager:
             return self.convert(data)
         except Exception:
             return False
-        
-    
+
     def convert(self, data: dict) -> bool:
         """
         Преобразовать данные из словаря в объект Settings.
-        
+
         Args:
             data (dict): Словарь с данными настроек
-            
+
         Returns:
             bool: True если преобразование успешно, False в случае ошибки
         """
@@ -127,22 +126,54 @@ class SettingsManager:
             self.__settings.company.BIK = company_data["BIK"]
             self.__settings.company.ownership_type = company_data["ownership_type"]
             self.__settings.company.INN = company_data["INN"]
-        
+
         # Обработка формата ответа
         if "response_format" in data:
             self.__settings.response_format = data["response_format"]
-        
+
         # Обработка настройки первого старта
         if "first_start" in data:
             self.__settings.first_start = data["first_start"]
-        
+
+        if "blocking_date" in data and data["blocking_date"]:
+            try:
+                self.__settings.blocking_date = datetime.fromisoformat(data["blocking_date"])
+            except ValueError:
+                self.__settings.blocking_date = None
+
         return True
 
+    def save(self) -> bool:
+        """
+        Сохранить настройки в файл с использованием фабрики конверторов
+        """
+        try:
+            # Используем фабрику конверторов для сериализации
+            convert_factory = ConvertFactory()
+            json_formatter = ResponseJson()
+
+            # Сериализуем настройки с помощью фабрики конверторов
+            data = {
+                "company": convert_factory.convert(self.__settings.company),
+                "response_format": self.__settings.response_format,
+                "first_start": self.__settings.first_start,
+                "blocking_date": self.__settings.blocking_date.isoformat() if self.__settings.blocking_date else None
+            }
+
+            # Используем JSON форматтер для сохранения
+            json_data = json_formatter.build("json", [data])
+
+            with open(self.__file_name, "w", encoding="utf-8") as f:
+                json.dump(json_data[0], f, ensure_ascii=False, indent=2)
+
+            return True
+        except Exception as e:
+            return False
 
     def default_settings(self):
         """
         Установить настройки по умолчанию.
-        
+
         Используется при инициализации или когда файл настроек недоступен.
         Устанавливает стандартные значения для всех параметров приложения.
         """
@@ -154,3 +185,4 @@ class SettingsManager:
         self.__settings.company.INN = "123456789012"
         self.__settings.response_format = "CSV"
         self.__settings.first_start = True
+        self.__settings.blocking_date = None
