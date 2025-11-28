@@ -1,5 +1,7 @@
 import os
 from datetime import datetime
+from src.core.observe_service import ObserveService
+from src.core.event_type import EventType
 from src.core.validator import Validator
 from src.dtos.balance_cache_dto import BalanceCacheDto
 from src.start_service import StartService
@@ -23,6 +25,7 @@ class BalanceService:
         self.convert_factory = ConvertFactory()
         self.json_formatter = ResponseJson()
         self.balances_file = "balances_cache.json"
+        ObserveService.add(self)
 
     def calculate_balances_until_date(self, target_date: datetime, storage: StorageModel = None):
         """
@@ -295,3 +298,11 @@ class BalanceService:
         """
         all_transactions = list(self.start_service.transactions.values())
         return Prototype.filter(all_transactions, filters)
+    
+    
+    def handle(self, event: str, params):
+        """
+        Обработчик событий
+        """
+        if event == EventType.change_nomenclature_unit_key():
+            self.calculate_turnovers_until_blocking_date()
