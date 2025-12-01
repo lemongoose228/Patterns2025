@@ -33,6 +33,7 @@ class ReferenceService:
         
         return data_map[reference_type]
     
+    
     def get_reference_item(self, reference_type: str, item_id: str):
         """Получить один элемент справочника по ID"""
         Validator.validate(reference_type, str)
@@ -119,66 +120,6 @@ class ReferenceService:
         ObserveService.create_event(EventType.change_reference_type_key(), None)
 
     
-    # Методы проверки использования сущностей
-    def _check_nomenclature_usage(self, nomenclature) -> list:
-        """Проверить использование номенклатуры в других данных"""
-        usage = []
-        
-        # Проверка в рецептах
-        for recipe_key, recipe in self.start_service.recipes.items():
-            if nomenclature.name in recipe.ingredients:
-                usage.append(f"рецепт '{recipe.name}'")
-        
-        # Проверка в транзакциях
-        for transaction_key, transaction in self.start_service.transactions.items():
-            if transaction.nomenclature == nomenclature:
-                usage.append(f"транзакция '{transaction.id}'")
-        
-        return usage
-    
-    def _check_unit_measurement_usage(self, unit) -> list:
-        """Проверить использование единицы измерения в других данных"""
-        usage = []
-        
-        # Проверка в номенклатурах
-        for nomenclature_key, nomenclature in self.start_service.nomenclatures.items():
-            if nomenclature.unit_measurement == unit:
-                usage.append(f"номенклатура '{nomenclature.name}'")
-        
-        # Проверка в транзакциях
-        for transaction_key, transaction in self.start_service.transactions.items():
-            if transaction.unit_measurement == unit:
-                usage.append(f"транзакция '{transaction.id}'")
-        
-        # Проверка в других единицах измерения (как базовая)
-        for unit_key, other_unit in self.start_service.units_measure.items():
-            if other_unit.base_unit == unit:
-                usage.append(f"единица измерения '{other_unit.name}'")
-        
-        return usage
-    
-    def _check_group_nomenclature_usage(self, group) -> list:
-        """Проверить использование группы номенклатур в других данных"""
-        usage = []
-        
-        # Проверка в номенклатурах
-        for nomenclature_key, nomenclature in self.start_service.nomenclatures.items():
-            if nomenclature.group_nomenclature == group:
-                usage.append(f"номенклатура '{nomenclature.name}'")
-        
-        return usage
-    
-    def _check_storage_usage(self, storage) -> list:
-        """Проверить использование склада в других данных"""
-        usage = []
-        
-        # Проверка в транзакциях
-        for transaction_key, transaction in self.start_service.transactions.items():
-            if transaction.storage == storage:
-                usage.append(f"транзакция '{transaction.id}'")
-        
-        return usage
-    
     # Методы для работы с номенклатурами
     def _add_nomenclature(self, item_data: dict):
         from src.models.nomenclature_model import NomenclatureModel
@@ -250,10 +191,7 @@ class ReferenceService:
     
     def _delete_nomenclature(self, item):
         # Проверяем использование номенклатуры
-        usage = self._check_nomenclature_usage(item)
-        if usage:
-            usage_list = ", ".join(usage)
-            raise ArgumentException(f"Номенклатура '{item.name}' используется в: {usage_list}. Удаление невозможно.")
+        ObserveService.create_event(EventType.delete_nomenclature_key(), {"nomenclature": item})
         
         # Находим ключ в словаре
         for key, value in self.start_service.nomenclatures.items():
@@ -317,10 +255,7 @@ class ReferenceService:
     
     def _delete_unit_measurement(self, item):
         # Проверяем использование единицы измерения
-        usage = self._check_unit_measurement_usage(item)
-        if usage:
-            usage_list = ", ".join(usage)
-            raise ArgumentException(f"Единица измерения '{item.name}' используется в: {usage_list}. Удаление невозможно.")
+        ObserveService.create_event(EventType.delete_unit_key(), {"unit": item})
         
         # Находим ключ в словаре
         for key, value in self.start_service.units_measure.items():
@@ -355,10 +290,7 @@ class ReferenceService:
     
     def _delete_group_nomenclature(self, item):
         # Проверяем использование группы номенклатуры
-        usage = self._check_group_nomenclature_usage(item)
-        if usage:
-            usage_list = ", ".join(usage)
-            raise ArgumentException(f"Группа номенклатуры '{item.name}' используется в: {usage_list}. Удаление невозможно.")
+        ObserveService.create_event(EventType.delete_group_nomenclature_key(), {"group": item})
         
         # Находим ключ в словаре
         for key, value in self.start_service.groups_nomenclature.items():
@@ -392,10 +324,7 @@ class ReferenceService:
     
     def _delete_storage(self, item):
         # Проверяем использование склада
-        usage = self._check_storage_usage(item)
-        if usage:
-            usage_list = ", ".join(usage)
-            raise ArgumentException(f"Склад '{item.name}' используется в: {usage_list}. Удаление невозможно.")
+        ObserveService.create_event(EventType.delete_storage_key(), {"storage": item})
         
         # Находим ключ в словаре
         for key, value in self.start_service.storages.items():
