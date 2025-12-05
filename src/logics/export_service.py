@@ -1,5 +1,7 @@
 import json
 from datetime import datetime
+from src.core.observe_service import ObserveService
+from src.core.event_type import EventType
 from src.core.validator import Validator
 from src.start_service import StartService
 from src.logics.convert_factory import ConvertFactory
@@ -12,6 +14,8 @@ class ExportService:
     def __init__(self, start_service):
         self.start_service = start_service
         self.convert_factory = ConvertFactory()
+        ObserveService.add(self)
+        
     
     def export_all_data(self, file_path: str):
         """
@@ -50,3 +54,12 @@ class ExportService:
             entity_dict = self.convert_factory.convert(entity)
             result.append(entity_dict)
         return result
+    
+    
+    def handle(self, event: str, params):
+        """
+        Обработчик событий
+        """
+        if event == EventType.change_reference_type_key():
+            # При изменении справочников автоматически обновляем data.json
+            self.export_all_data("data/data.json")

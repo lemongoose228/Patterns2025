@@ -1,4 +1,6 @@
-from src.core.validator import Validator
+from src.core.observe_service import ObserveService
+from src.core.event_type import EventType
+from src.core.validator import OperationException, Validator
 from src.models.group_nomenclature_model import GroupNomenclatureModel
 from src.repository import Repository
 from src.models.unit_measurement_model import UnitMeasurement
@@ -19,6 +21,7 @@ class StartService():
         self.data[Repository.recipe_key] = {}
         self.data[Repository.storage_key] = {}
         self.data[Repository.transaction_key] = {}
+        ObserveService.add(self)
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):
@@ -228,3 +231,49 @@ class StartService():
     @property
     def transactions(self):
         return self.data[Repository.transaction_key]
+    
+
+    def handle(self, event: str, params):
+        """
+        Обработчик событий
+        """
+        if event == EventType.delete_group_nomenclature_key():
+            for nomenclature_key, nomenclature in self.nomenclatures.items():
+                if nomenclature.group_nomenclature == params.group:
+                    raise OperationException("Невозможно удалить, так как сущность используется в других справочниках")
+                
+
+        elif event == EventType.delete_nomenclature_key():
+            # Проверка в рецептах
+            for recipe_key, recipe in self.recipes.items():
+                if params.nomenclature.name in recipe.ingredients:
+                    raise OperationException("Невозможно удалить, так как сущность используется в других справочниках")
+            
+            # Проверка в транзакциях
+            for transaction_key, transaction in self.transactions.items():
+                if transaction.nomenclature == params.nomenclature:
+                    raise OperationException("Невозможно удалить, так как сущность используется в других справочниках")
+                
+
+        elif event == EventType.delete_storage_key():
+            # Проверка в транзакциях
+            for transaction_key, transaction in self.transactions.items():
+                if transaction.storage == params.storage:
+                    raise OperationException("Невозможно удалить, так как сущность используется в других справочниках")
+                
+
+        elif event == EventType.delete_unit_key():
+            # Проверка в номенклатурах
+            for nomenclature_key, nomenclature in self.nomenclatures.items():
+                if nomenclature.unit_measurement == params.unit:
+                    raise OperationException("Невозможно удалить, так как сущность используется в других справочниках")
+            
+            # Проверка в транзакциях
+            for transaction_key, transaction in self.transactions.items():
+                if transaction.unit_measurement == params.unit:
+                    raise OperationException("Невозможно удалить, так как сущность используется в других справочниках")
+            
+            # Проверка в других единицах измерения (как базовая)
+            for unit_key, other_unit in self.units_measure.items():
+                if other_unit.base_unit == params.unit:
+                    raise OperationException("Невозможно удалить, так как сущность используется в других справочниках")

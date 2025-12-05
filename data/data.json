@@ -1,97 +1,97 @@
 {
-  "export_date": "2025-11-02T20:55:25.425464",
+  "export_date": "2025-11-28T21:16:13.708486",
   "units_measure": [
     {
       "base_unit": null,
       "coefficient": 1,
-      "id": "a3652bea-ac85-46c4-84b1-a52ba18b1007",
+      "id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746",
       "name": "грамм"
     },
     {
-      "base_unit_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007",
+      "base_unit_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746",
       "coefficient": 1000,
-      "id": "c36e78a0-a599-43f5-bbd6-fcdd02edc40a",
+      "id": "ef9a8851-2f4d-48e3-a3a7-e8ac70402fbb",
       "name": "кг"
     }
   ],
   "groups_nomenclature": [
     {
-      "id": "e2255795-6919-4a10-9c23-1b492801f0ef",
+      "id": "9cdff189-920d-4ccf-bb7d-1b79a8c4c069",
       "name": "Ингредиенты"
     }
   ],
   "nomenclatures": [
     {
-      "full_name": "wheat flour",
-      "group_nomenclature_id": "e2255795-6919-4a10-9c23-1b492801f0ef",
-      "id": "b9085704-93e8-42d7-9439-8b53a513697d",
+      "full_name": "Новое название для муки",
+      "group_nomenclature_id": "9cdff189-920d-4ccf-bb7d-1b79a8c4c069",
+      "id": "43d4d5dd-12b3-4824-9934-c01647b29317",
       "name": "wheat flour",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
       "full_name": "oatmeal",
-      "group_nomenclature_id": "e2255795-6919-4a10-9c23-1b492801f0ef",
-      "id": "54a664bd-7982-4da4-9271-1da496f1eb57",
+      "group_nomenclature_id": "9cdff189-920d-4ccf-bb7d-1b79a8c4c069",
+      "id": "29ece285-00e8-431b-b90c-bb7d4ac9a150",
       "name": "oatmeal",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
       "full_name": "granulated sugar",
-      "group_nomenclature_id": "e2255795-6919-4a10-9c23-1b492801f0ef",
-      "id": "313974ef-8828-4eea-8e8e-80aeb9eeb2aa",
+      "group_nomenclature_id": "9cdff189-920d-4ccf-bb7d-1b79a8c4c069",
+      "id": "36efa942-c9b7-43a0-9b09-f180a62eef17",
       "name": "sugar",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
       "full_name": "butter",
-      "group_nomenclature_id": "e2255795-6919-4a10-9c23-1b492801f0ef",
-      "id": "7512ec43-4cd5-40c0-8b1a-daada985c567",
+      "group_nomenclature_id": "9cdff189-920d-4ccf-bb7d-1b79a8c4c069",
+      "id": "0f9d55f0-c5b3-47d3-9973-c78014e633b5",
       "name": "butter",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
       "full_name": "chicken egg",
-      "group_nomenclature_id": "e2255795-6919-4a10-9c23-1b492801f0ef",
-      "id": "fdceb441-13c8-4868-ac61-7ecf190a72db",
+      "group_nomenclature_id": "9cdff189-920d-4ccf-bb7d-1b79a8c4c069",
+      "id": "5583a8d5-0c08-4d5c-b2b6-1835892f6f8b",
       "name": "chicken egg",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
       "full_name": "dark chocolate",
-      "group_nomenclature_id": "e2255795-6919-4a10-9c23-1b492801f0ef",
-      "id": "a859ec11-2dd3-405e-8683-f3218b05bee2",
+      "group_nomenclature_id": "9cdff189-920d-4ccf-bb7d-1b79a8c4c069",
+      "id": "625a6599-a7e0-4155-9540-9f4943fbfeb9",
       "name": "dark chocolate",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
       "full_name": "baking powder",
-      "group_nomenclature_id": "e2255795-6919-4a10-9c23-1b492801f0ef",
-      "id": "6fd5d581-f7f8-4565-ace8-9fbfed03bd66",
+      "group_nomenclature_id": "9cdff189-920d-4ccf-bb7d-1b79a8c4c069",
+      "id": "504ebdc2-10fe-4928-bb4c-a0f35e06e845",
       "name": "baking powder",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
       "full_name": "salt",
-      "group_nomenclature_id": "e2255795-6919-4a10-9c23-1b492801f0ef",
-      "id": "39730370-58ab-4ecb-8b16-0f90d73d5921",
+      "group_nomenclature_id": "9cdff189-920d-4ccf-bb7d-1b79a8c4c069",
+      "id": "a7380aba-2406-4793-b768-40653a9e8abb",
       "name": "salt",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     }
   ],
   "storages": [
     {
-      "id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
+      "id": "e5007a0f-cee6-4f50-815b-c85472190730",
       "name": "Основной склад"
     },
     {
-      "id": "42221216-243e-4736-b841-99b52fca79cf",
+      "id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
       "name": "Резервный склад"
     }
   ],
   "recipes": [
     {
       "description": "Время приготовления: 25 минут\n            Духовку разогрейте до 180°C. Противень застелите бумагой для выпечки.\n            Шоколад измельчите на небольшие кусочки ножом.\n            Масло комнатной температуры взбейте с сахаром до легкой пены.\n            Добавьте яйцо и взбивайте еще 1-2 минуты до однородности.\n            В отдельной миске смешайте овсяные хлопья, муку, разрыхлитель и соль.\n            Соедините сухие ингредиенты с масляной смесью, добавьте измельченный шоколад.\n            Замесите тесто ложкой до однородной консистенции.\n            Сформируйте небольшие шарики (примерно по 30-40 гр), выложите на противень и слегка приплюсните.\n            Выпекайте 12-15 минут до золотистого края. Дайте печенью остыть на противне 5 минут перед подачей.\n            Приятного аппетита!",
-      "id": "2cf47972-b3ed-417a-b66d-82db4af2e657",
+      "id": "6eee0d58-7c74-4d09-aab9-22484c0fb4de",
       "ingredients": {
         "wheat flour": 100,
         "oatmeal": 200,
@@ -107,454 +107,454 @@
   ],
   "transactions": [
     {
-      "date": "2025-10-18T20:55:19.129985",
-      "id": "2fd69702-2077-428a-82ac-a99899c7fba5",
-      "nomenclature_id": "54a664bd-7982-4da4-9271-1da496f1eb57",
-      "quantity": 602.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-07T20:55:19.129985",
-      "id": "2c81b603-6c82-4a55-bfe0-cf155ad922bb",
-      "nomenclature_id": "313974ef-8828-4eea-8e8e-80aeb9eeb2aa",
-      "quantity": 195.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
+      "date": "2025-11-16T21:13:28.023184",
+      "id": "77ea2186-3c90-4a85-9771-0631c8702840",
+      "nomenclature_id": "a7380aba-2406-4793-b768-40653a9e8abb",
+      "quantity": 154.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
       "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-17T20:55:19.129985",
-      "id": "5e750cdb-43de-47ff-9986-71242c1d97b5",
-      "nomenclature_id": "6fd5d581-f7f8-4565-ace8-9fbfed03bd66",
-      "quantity": 565.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
+      "date": "2025-11-12T21:13:28.023184",
+      "id": "1e4110c0-78e5-4629-85ca-c417178a7aae",
+      "nomenclature_id": "29ece285-00e8-431b-b90c-bb7d4ac9a150",
+      "quantity": 546.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
       "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-07T20:55:19.129985",
-      "id": "ea33d641-1bc9-4697-8553-be3ab1d631ec",
-      "nomenclature_id": "313974ef-8828-4eea-8e8e-80aeb9eeb2aa",
-      "quantity": 917.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
+      "date": "2025-11-25T21:13:28.023184",
+      "id": "a3e37c78-70ba-4d46-a6aa-fd41e1ace5eb",
+      "nomenclature_id": "36efa942-c9b7-43a0-9b09-f180a62eef17",
+      "quantity": 138.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
       "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-30T20:55:19.129985",
-      "id": "890db7b6-1509-4b42-8eee-28b9118ecf74",
-      "nomenclature_id": "313974ef-8828-4eea-8e8e-80aeb9eeb2aa",
-      "quantity": 704.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
+      "date": "2025-11-15T21:13:28.023184",
+      "id": "0448da80-b8ee-43cb-82c3-5506fa0fe480",
+      "nomenclature_id": "29ece285-00e8-431b-b90c-bb7d4ac9a150",
+      "quantity": 635.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-07T21:13:28.023184",
+      "id": "25788fb1-8c27-429b-b703-16a43895a93e",
+      "nomenclature_id": "504ebdc2-10fe-4928-bb4c-a0f35e06e845",
+      "quantity": 725.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
       "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-13T20:55:19.129985",
-      "id": "234eca50-80f0-44db-8ab0-79965b56e64d",
-      "nomenclature_id": "39730370-58ab-4ecb-8b16-0f90d73d5921",
-      "quantity": 240.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
+      "date": "2025-11-13T21:13:28.023184",
+      "id": "6119e1c4-e5bd-4e89-a381-b0bbf57deffd",
+      "nomenclature_id": "0f9d55f0-c5b3-47d3-9973-c78014e633b5",
+      "quantity": 434.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-04T21:13:28.023184",
+      "id": "f2f613e5-6308-470a-8b89-01ae8fbf5ec3",
+      "nomenclature_id": "a7380aba-2406-4793-b768-40653a9e8abb",
+      "quantity": 507.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
       "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-11T20:55:19.129985",
-      "id": "3b3e3216-1bef-4208-8981-9cb849231699",
-      "nomenclature_id": "b9085704-93e8-42d7-9439-8b53a513697d",
-      "quantity": 489.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-11-01T20:55:19.129985",
-      "id": "9f911828-5244-46ff-a3c5-5c74e9b3a975",
-      "nomenclature_id": "fdceb441-13c8-4868-ac61-7ecf190a72db",
-      "quantity": 886.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
+      "date": "2025-11-02T21:13:28.023184",
+      "id": "041cc90d-dcda-45a0-9251-a5500a66f80f",
+      "nomenclature_id": "625a6599-a7e0-4155-9540-9f4943fbfeb9",
+      "quantity": 272.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
       "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-04T20:55:19.129985",
-      "id": "1216929c-8997-40d1-ab14-637306e72722",
-      "nomenclature_id": "fdceb441-13c8-4868-ac61-7ecf190a72db",
-      "quantity": 356.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
+      "date": "2025-11-17T21:13:28.023184",
+      "id": "e1660eb7-da28-42d9-8701-ab461e570691",
+      "nomenclature_id": "29ece285-00e8-431b-b90c-bb7d4ac9a150",
+      "quantity": 374.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
       "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-10T20:55:19.129985",
-      "id": "38e06cec-fe0b-4449-af61-f4f7ea10ee10",
-      "nomenclature_id": "b9085704-93e8-42d7-9439-8b53a513697d",
-      "quantity": 207.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
+      "date": "2025-11-22T21:13:28.023184",
+      "id": "a1af7370-5847-419a-9d8f-259a8ae4146e",
+      "nomenclature_id": "36efa942-c9b7-43a0-9b09-f180a62eef17",
+      "quantity": 966.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
       "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-05T20:55:19.129985",
-      "id": "059194f4-79c3-494d-b46d-9826ad9d2138",
-      "nomenclature_id": "7512ec43-4cd5-40c0-8b1a-daada985c567",
-      "quantity": 320.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-27T20:55:19.129985",
-      "id": "f68ff23f-5b9c-456a-b543-57a7b4718c37",
-      "nomenclature_id": "313974ef-8828-4eea-8e8e-80aeb9eeb2aa",
-      "quantity": 519.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
-      "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-22T20:55:19.129985",
-      "id": "2900ebcd-8ac6-4919-8612-3e2cdd5c5963",
-      "nomenclature_id": "fdceb441-13c8-4868-ac61-7ecf190a72db",
-      "quantity": 356.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-21T20:55:19.129985",
-      "id": "d24e48a3-b9f6-4100-a2af-5af0585617ed",
-      "nomenclature_id": "313974ef-8828-4eea-8e8e-80aeb9eeb2aa",
-      "quantity": 611.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-30T20:55:19.129985",
-      "id": "1defb699-ef2d-4129-9690-1eb449acddcb",
-      "nomenclature_id": "7512ec43-4cd5-40c0-8b1a-daada985c567",
-      "quantity": 925.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
-      "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-29T20:55:19.129985",
-      "id": "50d0445b-63a8-492f-9c8f-191bf8d560bd",
-      "nomenclature_id": "7512ec43-4cd5-40c0-8b1a-daada985c567",
-      "quantity": 942.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
-      "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-23T20:55:19.129985",
-      "id": "b9cbd8d9-9a1c-4141-92aa-d081f532db36",
-      "nomenclature_id": "313974ef-8828-4eea-8e8e-80aeb9eeb2aa",
-      "quantity": 675.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
-      "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-21T20:55:19.129985",
-      "id": "17e15833-face-4340-878b-58e5386fc0b3",
-      "nomenclature_id": "a859ec11-2dd3-405e-8683-f3218b05bee2",
-      "quantity": 753.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-18T20:55:19.129985",
-      "id": "fd1db28e-8531-49ce-8fce-b7de60525fde",
-      "nomenclature_id": "b9085704-93e8-42d7-9439-8b53a513697d",
-      "quantity": 261.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-14T20:55:19.129985",
-      "id": "1c655843-9f35-4f9a-b9d0-fd34c0c6ba62",
-      "nomenclature_id": "6fd5d581-f7f8-4565-ace8-9fbfed03bd66",
-      "quantity": 444.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-18T20:55:19.129985",
-      "id": "676eb51d-135b-401c-9d8d-547ae2651f21",
-      "nomenclature_id": "a859ec11-2dd3-405e-8683-f3218b05bee2",
-      "quantity": 607.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-23T20:55:19.129985",
-      "id": "5461a9bb-2427-49e3-864c-16eda4cf1efc",
-      "nomenclature_id": "6fd5d581-f7f8-4565-ace8-9fbfed03bd66",
-      "quantity": 279.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-22T20:55:19.129985",
-      "id": "316a059b-2c0e-4ddc-ab52-1c2723366a0a",
-      "nomenclature_id": "6fd5d581-f7f8-4565-ace8-9fbfed03bd66",
-      "quantity": 322.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
-      "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-06T20:55:19.129985",
-      "id": "8f3d1d49-d2f7-469b-968e-e55fbddf49ef",
-      "nomenclature_id": "54a664bd-7982-4da4-9271-1da496f1eb57",
-      "quantity": 210.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
-      "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-22T20:55:19.129985",
-      "id": "9005cf89-7e58-4476-b992-97a4777bb148",
-      "nomenclature_id": "b9085704-93e8-42d7-9439-8b53a513697d",
-      "quantity": 683.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-05T20:55:19.129985",
-      "id": "325bec5f-cdd3-44cb-bae3-cde3e2f7e244",
-      "nomenclature_id": "54a664bd-7982-4da4-9271-1da496f1eb57",
-      "quantity": 630.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-20T20:55:19.129985",
-      "id": "02345479-477d-41f6-b838-e78ce694dece",
-      "nomenclature_id": "7512ec43-4cd5-40c0-8b1a-daada985c567",
-      "quantity": 886.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-31T20:55:19.129985",
-      "id": "a8c55d4f-9f80-472e-9da9-60969303ac4c",
-      "nomenclature_id": "b9085704-93e8-42d7-9439-8b53a513697d",
-      "quantity": 325.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
-      "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-05T20:55:19.129985",
-      "id": "f9d4b162-18ab-4426-9151-3f4fac8f311a",
-      "nomenclature_id": "b9085704-93e8-42d7-9439-8b53a513697d",
-      "quantity": 685.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-15T20:55:19.129985",
-      "id": "28d89dbd-6e94-4aca-b338-b569c44474bd",
-      "nomenclature_id": "a859ec11-2dd3-405e-8683-f3218b05bee2",
-      "quantity": 895.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-22T20:55:19.129985",
-      "id": "a5a9748d-e0a2-48ab-b7e1-61a5fe3e6683",
-      "nomenclature_id": "7512ec43-4cd5-40c0-8b1a-daada985c567",
-      "quantity": 345.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-25T20:55:19.129985",
-      "id": "b5721490-eb62-4771-a9fb-09f20b33878e",
-      "nomenclature_id": "39730370-58ab-4ecb-8b16-0f90d73d5921",
-      "quantity": 321.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-17T20:55:19.129985",
-      "id": "a2b8d8ff-98fa-4a94-97f7-d70ef2edf9db",
-      "nomenclature_id": "7512ec43-4cd5-40c0-8b1a-daada985c567",
-      "quantity": 978.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-22T20:55:19.129985",
-      "id": "d1df66ee-a9fc-4597-99c8-36a749cfee30",
-      "nomenclature_id": "fdceb441-13c8-4868-ac61-7ecf190a72db",
-      "quantity": 667.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-19T20:55:19.129985",
-      "id": "9e41462c-1b38-4305-b9ac-ba8e2cafc4ea",
-      "nomenclature_id": "a859ec11-2dd3-405e-8683-f3218b05bee2",
-      "quantity": 115.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-03T20:55:19.129985",
-      "id": "b51d96dd-45c0-4d19-bd1b-f4d4f0e8c28b",
-      "nomenclature_id": "a859ec11-2dd3-405e-8683-f3218b05bee2",
-      "quantity": 135.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-11-01T20:55:19.129985",
-      "id": "6f314d42-0655-4cf6-be01-70c67f3ee469",
-      "nomenclature_id": "6fd5d581-f7f8-4565-ace8-9fbfed03bd66",
-      "quantity": 463.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-27T20:55:19.129985",
-      "id": "d309a9b2-03c1-43f6-98ab-77b9e77711f1",
-      "nomenclature_id": "313974ef-8828-4eea-8e8e-80aeb9eeb2aa",
-      "quantity": 274.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-31T20:55:19.129985",
-      "id": "add8bb3c-20a9-47a2-8231-a9d24b143d80",
-      "nomenclature_id": "6fd5d581-f7f8-4565-ace8-9fbfed03bd66",
+      "date": "2025-11-05T21:13:28.023184",
+      "id": "4bdaa6d6-5036-44bc-a0b2-e1f3ef7265a7",
+      "nomenclature_id": "a7380aba-2406-4793-b768-40653a9e8abb",
       "quantity": 999.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-21T21:13:28.023184",
+      "id": "8aee5681-6d56-4e73-bb48-b026f12c8900",
+      "nomenclature_id": "43d4d5dd-12b3-4824-9934-c01647b29317",
+      "quantity": 488.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
       "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-07T20:55:19.129985",
-      "id": "ca909fc2-40cc-41db-a9d5-8f46a3d4c858",
-      "nomenclature_id": "b9085704-93e8-42d7-9439-8b53a513697d",
-      "quantity": 556.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-08T20:55:19.129985",
-      "id": "39017895-9f2d-4596-87e2-b3d5ad593745",
-      "nomenclature_id": "39730370-58ab-4ecb-8b16-0f90d73d5921",
-      "quantity": 441.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
+      "date": "2025-11-28T21:13:28.023184",
+      "id": "0994b748-eba4-4162-8ad2-f8612e10b7e4",
+      "nomenclature_id": "29ece285-00e8-431b-b90c-bb7d4ac9a150",
+      "quantity": 422.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
       "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-31T20:55:19.129985",
-      "id": "47cb7545-9434-46ec-8f04-d67826d243ff",
-      "nomenclature_id": "54a664bd-7982-4da4-9271-1da496f1eb57",
-      "quantity": 903.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
+      "date": "2025-11-05T21:13:28.023184",
+      "id": "80173614-3f3d-4477-b7d7-13bf42572c0f",
+      "nomenclature_id": "a7380aba-2406-4793-b768-40653a9e8abb",
+      "quantity": 161.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-23T21:13:28.023184",
+      "id": "a4a9e7d6-c515-4cbd-acd3-90397d2a5357",
+      "nomenclature_id": "a7380aba-2406-4793-b768-40653a9e8abb",
+      "quantity": 981.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
       "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-08T20:55:19.129985",
-      "id": "e194c313-06a5-408d-a7c7-234838e60075",
-      "nomenclature_id": "b9085704-93e8-42d7-9439-8b53a513697d",
-      "quantity": 760.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
+      "date": "2025-11-20T21:13:28.023184",
+      "id": "193b6d94-3be9-4406-90e2-346ac082046b",
+      "nomenclature_id": "504ebdc2-10fe-4928-bb4c-a0f35e06e845",
+      "quantity": 480.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
       "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-11T20:55:19.129985",
-      "id": "1f658822-60c6-4bd9-a616-1833f14174c1",
-      "nomenclature_id": "313974ef-8828-4eea-8e8e-80aeb9eeb2aa",
-      "quantity": 569.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
+      "date": "2025-10-29T21:13:28.023184",
+      "id": "3f0d22e5-947c-4aaa-9b92-cae77818aaf3",
+      "nomenclature_id": "5583a8d5-0c08-4d5c-b2b6-1835892f6f8b",
+      "quantity": 658.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
       "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-07T20:55:19.129985",
-      "id": "12109849-42e9-4c5b-8f8e-fe5ce4b2df6d",
-      "nomenclature_id": "7512ec43-4cd5-40c0-8b1a-daada985c567",
-      "quantity": 104.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
+      "date": "2025-11-04T21:13:28.023184",
+      "id": "f44ed48f-482e-463d-a40b-6e4f070d97f9",
+      "nomenclature_id": "5583a8d5-0c08-4d5c-b2b6-1835892f6f8b",
+      "quantity": 586.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
       "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-27T20:55:19.129985",
-      "id": "6937f21e-396e-40c5-9b3b-ffb1964aec4b",
-      "nomenclature_id": "fdceb441-13c8-4868-ac61-7ecf190a72db",
-      "quantity": 416.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
+      "date": "2025-11-05T21:13:28.023184",
+      "id": "0d2e7b10-be87-44e4-90c1-456dbff2b612",
+      "nomenclature_id": "29ece285-00e8-431b-b90c-bb7d4ac9a150",
+      "quantity": 682.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
       "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-25T20:55:19.129985",
-      "id": "7c4a6622-8ae7-4dec-9256-9b6cea347a30",
-      "nomenclature_id": "a859ec11-2dd3-405e-8683-f3218b05bee2",
-      "quantity": 254.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
+      "date": "2025-11-25T21:13:28.023184",
+      "id": "313d0587-dc9b-419b-857f-657d0ff5995f",
+      "nomenclature_id": "43d4d5dd-12b3-4824-9934-c01647b29317",
+      "quantity": 804.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
       "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     },
     {
-      "date": "2025-10-31T20:55:19.129985",
-      "id": "93727547-9984-4738-a93f-490e51e54b47",
-      "nomenclature_id": "54a664bd-7982-4da4-9271-1da496f1eb57",
-      "quantity": 608.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-22T20:55:19.129985",
-      "id": "b3ab97ba-e91c-47a1-aacd-bb0afb1f454d",
-      "nomenclature_id": "b9085704-93e8-42d7-9439-8b53a513697d",
-      "quantity": 945.0,
-      "storage_id": "42221216-243e-4736-b841-99b52fca79cf",
-      "transaction_type": "out",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
-    },
-    {
-      "date": "2025-10-16T20:55:19.129985",
-      "id": "4bead043-783d-4cde-aef4-68414b6ed874",
-      "nomenclature_id": "313974ef-8828-4eea-8e8e-80aeb9eeb2aa",
-      "quantity": 207.0,
-      "storage_id": "1940adfe-dbe8-4336-b3b0-3c1864881de5",
+      "date": "2025-10-31T21:13:28.023184",
+      "id": "b37cb51c-db05-49bf-8329-0fee76e75cf7",
+      "nomenclature_id": "625a6599-a7e0-4155-9540-9f4943fbfeb9",
+      "quantity": 268.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
       "transaction_type": "in",
-      "unit_measurement_id": "a3652bea-ac85-46c4-84b1-a52ba18b1007"
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-14T21:13:28.023184",
+      "id": "4ade1023-dbfd-4cac-842c-aeff2031befa",
+      "nomenclature_id": "29ece285-00e8-431b-b90c-bb7d4ac9a150",
+      "quantity": 301.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-25T21:13:28.023184",
+      "id": "9e57a46d-ea47-4c8f-bd47-63e1ce003653",
+      "nomenclature_id": "0f9d55f0-c5b3-47d3-9973-c78014e633b5",
+      "quantity": 674.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-15T21:13:28.023184",
+      "id": "4826c2ef-df61-4bb4-b39d-8ff7a6ebf155",
+      "nomenclature_id": "5583a8d5-0c08-4d5c-b2b6-1835892f6f8b",
+      "quantity": 693.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "in",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-18T21:13:28.023184",
+      "id": "a4cfb547-a681-4893-af67-070a7968efab",
+      "nomenclature_id": "504ebdc2-10fe-4928-bb4c-a0f35e06e845",
+      "quantity": 605.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "in",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-20T21:13:28.023184",
+      "id": "8b3c571c-085d-47f0-b723-5e35cd21ad26",
+      "nomenclature_id": "43d4d5dd-12b3-4824-9934-c01647b29317",
+      "quantity": 249.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-03T21:13:28.023184",
+      "id": "d8ace631-47ca-4237-a7b4-32e82ba602e9",
+      "nomenclature_id": "0f9d55f0-c5b3-47d3-9973-c78014e633b5",
+      "quantity": 228.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
+      "transaction_type": "in",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-22T21:13:28.023184",
+      "id": "ca3e1fcd-a12d-48e5-bfd3-cb0974a861c6",
+      "nomenclature_id": "a7380aba-2406-4793-b768-40653a9e8abb",
+      "quantity": 350.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-01T21:13:28.023184",
+      "id": "ff678e63-cfdf-4f74-a2c1-563e67b8365e",
+      "nomenclature_id": "29ece285-00e8-431b-b90c-bb7d4ac9a150",
+      "quantity": 659.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "in",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-13T21:13:28.023184",
+      "id": "508733ab-52dd-400b-b19f-fb821af04869",
+      "nomenclature_id": "36efa942-c9b7-43a0-9b09-f180a62eef17",
+      "quantity": 899.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "in",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-05T21:13:28.023184",
+      "id": "63c88859-4a18-4ebe-ad73-6185c3bb2473",
+      "nomenclature_id": "43d4d5dd-12b3-4824-9934-c01647b29317",
+      "quantity": 978.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
+      "transaction_type": "in",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-23T21:13:28.023184",
+      "id": "0c8866b4-b2b6-460a-b685-ee0479ee72ae",
+      "nomenclature_id": "504ebdc2-10fe-4928-bb4c-a0f35e06e845",
+      "quantity": 291.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-24T21:13:28.023184",
+      "id": "68250aa9-ee05-46a3-a759-31acab31ca18",
+      "nomenclature_id": "5583a8d5-0c08-4d5c-b2b6-1835892f6f8b",
+      "quantity": 756.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-27T21:13:28.023184",
+      "id": "2ab90032-9b67-41f7-99c2-e4235830c7a5",
+      "nomenclature_id": "36efa942-c9b7-43a0-9b09-f180a62eef17",
+      "quantity": 437.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "in",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-18T21:13:28.023184",
+      "id": "3369db11-ba67-48ba-bc33-63543fe395c5",
+      "nomenclature_id": "29ece285-00e8-431b-b90c-bb7d4ac9a150",
+      "quantity": 301.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "in",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-03T21:13:28.023184",
+      "id": "4483592f-223a-484d-ad0f-75837705a83f",
+      "nomenclature_id": "504ebdc2-10fe-4928-bb4c-a0f35e06e845",
+      "quantity": 982.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "in",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-10-29T21:13:28.023184",
+      "id": "9ed649d5-a998-43df-8a72-1985e8e7e6cf",
+      "nomenclature_id": "a7380aba-2406-4793-b768-40653a9e8abb",
+      "quantity": 534.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-19T21:13:28.023184",
+      "id": "da1cc404-cf1f-4b84-a6d4-d71be0c6f668",
+      "nomenclature_id": "0f9d55f0-c5b3-47d3-9973-c78014e633b5",
+      "quantity": 861.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
+      "transaction_type": "in",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-11T21:13:28.023184",
+      "id": "d8a15415-c4ed-467f-afe0-ab558cc7e0c5",
+      "nomenclature_id": "5583a8d5-0c08-4d5c-b2b6-1835892f6f8b",
+      "quantity": 168.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-06T21:13:28.023184",
+      "id": "53f0c5dc-24ae-403d-99b8-cb877f96b718",
+      "nomenclature_id": "29ece285-00e8-431b-b90c-bb7d4ac9a150",
+      "quantity": 748.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "in",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-17T21:13:28.023184",
+      "id": "4637aeb2-8785-43bc-94c2-9cb43e67dfbb",
+      "nomenclature_id": "36efa942-c9b7-43a0-9b09-f180a62eef17",
+      "quantity": 874.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-05T21:13:28.023184",
+      "id": "0e84099b-06b7-4c4e-a95c-ce62a196a6ad",
+      "nomenclature_id": "5583a8d5-0c08-4d5c-b2b6-1835892f6f8b",
+      "quantity": 570.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "in",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-15T21:13:28.023184",
+      "id": "e11840d9-f0d4-4217-93fe-139072c51b6f",
+      "nomenclature_id": "0f9d55f0-c5b3-47d3-9973-c78014e633b5",
+      "quantity": 612.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-07T21:13:28.023184",
+      "id": "a6fa6fac-c4d1-45d9-9983-e26c20961397",
+      "nomenclature_id": "43d4d5dd-12b3-4824-9934-c01647b29317",
+      "quantity": 397.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-16T21:13:28.023184",
+      "id": "d43608fd-b2a5-4428-bd14-9b9ef56e866d",
+      "nomenclature_id": "5583a8d5-0c08-4d5c-b2b6-1835892f6f8b",
+      "quantity": 697.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-14T21:13:28.023184",
+      "id": "128b933d-5c4c-4046-ae90-c7d54e6a1705",
+      "nomenclature_id": "36efa942-c9b7-43a0-9b09-f180a62eef17",
+      "quantity": 709.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-16T21:13:28.023184",
+      "id": "245eba30-58be-438a-857a-a953cf262eff",
+      "nomenclature_id": "29ece285-00e8-431b-b90c-bb7d4ac9a150",
+      "quantity": 497.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
+      "transaction_type": "in",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-23T21:13:28.023184",
+      "id": "5ae48a32-9d33-4ff4-a69d-46ccca1326d0",
+      "nomenclature_id": "29ece285-00e8-431b-b90c-bb7d4ac9a150",
+      "quantity": 646.0,
+      "storage_id": "e5007a0f-cee6-4f50-815b-c85472190730",
+      "transaction_type": "in",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-18T21:13:28.023184",
+      "id": "37e20735-d6ff-45f3-a150-2d3a02ab52a9",
+      "nomenclature_id": "a7380aba-2406-4793-b768-40653a9e8abb",
+      "quantity": 119.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
+    },
+    {
+      "date": "2025-11-19T21:13:28.023184",
+      "id": "941840ee-b1ff-49f2-b7b5-e3ba90c9440e",
+      "nomenclature_id": "0f9d55f0-c5b3-47d3-9973-c78014e633b5",
+      "quantity": 111.0,
+      "storage_id": "b6e3dab9-5abe-4328-8fe7-df5d1c7341c8",
+      "transaction_type": "out",
+      "unit_measurement_id": "e71a2f4c-a36d-41e3-a2e5-82b14e8e1746"
     }
   ]
 }

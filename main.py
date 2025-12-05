@@ -15,11 +15,13 @@ from src.logics.turnover_report_service import TurnoverReportService
 from src.logics.export_service import ExportService
 from src.settings_manager import SettingsManager
 import os
+from src.logics.reference_service import ReferenceService
 
 app = connexion.FlaskApp(__name__)
 
 # Инициализация сервисов
 start_service = StartService()
+reference_service = ReferenceService(start_service)
 
 # Загрузка настроек
 settings_manager = None
@@ -695,6 +697,198 @@ def get_balances_report():
             content_type="application/json"
         )
         
+    except Exception as e:
+        return Response(
+            status=500,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
+
+
+"""
+GET - Получить элемент справочника по ID
+"""
+@app.route("/api/<reference_type>/<item_id>", methods=['GET'])
+def get_reference_item(reference_type: str, item_id: str):
+    try:
+        Validator.validate(reference_type, str)
+        Validator.validate(item_id, str)
+        
+        item = reference_service.get_reference_item(reference_type, item_id)
+        
+        # Создаем JSON форматтер
+        formatter = factory.create("Json")
+        result = formatter.build("json", [item])
+        
+        return Response(
+            status=200,
+            response=json.dumps({
+                "success": True,
+                "item": result
+            }),
+            content_type="application/json"
+        )
+        
+    except ArgumentException as e:
+        return Response(
+            status=400,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
+    except Exception as e:
+        return Response(
+            status=500,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
+
+"""
+PUT - Добавить новый элемент в справочник
+"""
+@app.route("/api/<reference_type>", methods=['PUT'])
+def add_reference_item(reference_type: str):
+    try:
+        Validator.validate(reference_type, str)
+        
+        request_data = request.get_json()
+        if not request_data:
+            return Response(
+                status=400,
+                response=json.dumps({
+                    "success": False,
+                    "error": "Не указаны данные элемента в теле запроса"
+                }),
+                content_type="application/json"
+            )
+        
+        item = reference_service.add_reference_item(reference_type, request_data)
+        
+        # Создаем JSON форматтер
+        formatter = factory.create("Json")
+        result = formatter.build("json", [item])
+        
+        return Response(
+            status=201,
+            response=json.dumps({
+                "success": True,
+                "message": "Элемент успешно добавлен",
+                "item": result
+            }),
+            content_type="application/json"
+        )
+        
+    except ArgumentException as e:
+        return Response(
+            status=400,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
+    except Exception as e:
+        return Response(
+            status=500,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
+
+"""
+PATCH - Обновить элемент справочника
+"""
+@app.route("/api/<reference_type>/<item_id>", methods=['PATCH'])
+def update_reference_item(reference_type: str, item_id: str):
+    try:
+        Validator.validate(reference_type, str)
+        Validator.validate(item_id, str)
+        
+        request_data = request.get_json()
+        if not request_data:
+            return Response(
+                status=400,
+                response=json.dumps({
+                    "success": False,
+                    "error": "Не указаны данные для обновления в теле запроса"
+                }),
+                content_type="application/json"
+            )
+        
+        item = reference_service.update_reference_item(reference_type, item_id, request_data)
+        
+        # Создаем JSON форматтер
+        formatter = factory.create("Json")
+        result = formatter.build("json", [item])
+        
+        return Response(
+            status=200,
+            response=json.dumps({
+                "success": True,
+                "message": "Элемент успешно обновлен",
+                "item": result
+            }),
+            content_type="application/json"
+        )
+        
+    except ArgumentException as e:
+        return Response(
+            status=400,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
+    except Exception as e:
+        return Response(
+            status=500,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
+
+"""
+DELETE - Удалить элемент справочника
+"""
+@app.route("/api/<reference_type>/<item_id>", methods=['DELETE'])
+def delete_reference_item(reference_type: str, item_id: str):
+    try:
+        Validator.validate(reference_type, str)
+        Validator.validate(item_id, str)
+        
+        reference_service.delete_reference_item(reference_type, item_id)
+        
+        return Response(
+            status=200,
+            response=json.dumps({
+                "success": True,
+                "message": "Элемент успешно удален"
+            }),
+            content_type="application/json"
+        )
+        
+    except ArgumentException as e:
+        return Response(
+            status=400,
+            response=json.dumps({
+                "success": False,
+                "error": str(e)
+            }),
+            content_type="application/json"
+        )
     except Exception as e:
         return Response(
             status=500,
