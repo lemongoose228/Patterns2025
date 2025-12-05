@@ -6,6 +6,11 @@ class Settings:
     __response_format: str = "CSV"
     __first_start: bool = True
     __blocking_date: datetime = None 
+    __log_level: str = "INFO"  # DEBUG, INFO, ERROR
+    __log_mode: str = "FILE"  # CONSOLE, FILE
+    __log_directory: str = "logs"
+    __log_date_format: str = "%Y-%m-%d %H:%M:%S"
+    __log_format: str = "[{level}] {timestamp} - {module}: {message}"
 
     @property
     def company(self) -> CompanyModel:
@@ -34,3 +39,43 @@ class Settings:
     @blocking_date.setter
     def blocking_date(self, value: datetime):
         self.__blocking_date = value
+
+    @property
+    def log_level(self) -> str:
+        return self.__log_level
+
+    @log_level.setter
+    def log_level(self, value: str):
+        self.__log_level = value
+
+    @property
+    def log_mode(self) -> str:
+        return self.__log_mode
+
+    @log_mode.setter
+    def log_mode(self, value: str):
+        self.__log_mode = value
+
+    @property
+    def log_directory(self) -> str:
+        return self.__log_directory
+
+    @log_directory.setter
+    def log_directory(self, value: str):
+        self.__log_directory = value
+
+    @property
+    def log_date_format(self) -> str:
+        return self.__log_date_format
+
+    @log_date_format.setter
+    def log_date_format(self, value: str):
+        self.__log_date_format = value
+
+    @property
+    def log_format(self) -> str:
+        return self.__log_format
+
+    @log_format.setter
+    def log_format(self, value: str):
+        self.__log_format = value

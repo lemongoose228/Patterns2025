@@ -12,6 +12,7 @@ from src.core.prototype import Prototype
 from src.dtos.filter_dto import FilterDto
 from src.logics.response_json import ResponseJson
 from src.core.common import common
+from src.logics.logger_service import LoggerService
 
 
 class BalanceService:
@@ -27,11 +28,15 @@ class BalanceService:
         self.balances_file = "balances_cache.json"
         ObserveService.add(self)
 
+        LoggerService.log_info("Инициализирован BalanceService", "balance_service")
+
     def calculate_balances_until_date(self, target_date: datetime, storage: StorageModel = None):
         """
         Рассчитать остатки на указанную дату с использованием оптимизации через дату блокировки
         """
         Validator.validate(target_date, datetime)
+
+        LoggerService.log_balance_calculation(target_date, storage.name if storage else "all")
 
         blocking_date = self.settings_manager.settings.blocking_date
         balances = {}
@@ -49,13 +54,22 @@ class BalanceService:
                 period_transactions = self._get_transactions_in_period_with_prototype(blocking_date, target_date,
                                                                                       storage)
                 balances = self._apply_transactions_to_balances(balances, period_transactions)
+
+                LoggerService.log_debug(
+                    f"Использован кэш остатков на {blocking_date}. Рассчитаны остатки за период {blocking_date} - {target_date}",
+                    "balance_service")
             else:
                 # Если кэш не найден, рассчитываем полностью
                 balances = self._calculate_full_balances_with_prototype(target_date, storage)
+                LoggerService.log_debug(f"Полный расчет остатков до {target_date}", "balance_service")
         else:
             # Если блокировки нет или она позже целевой даты, рассчитываем полностью
             balances = self._calculate_full_balances_with_prototype(target_date, storage)
+            LoggerService.log_debug(f"Полный расчет остатков до {target_date}", "balance_service")
 
+        # Логируем количество рассчитанных остатков
+        LoggerService.log_info(f"Рассчитаны остатки для {len(balances)} номенклатур на {target_date}",
+                               "balance_service")
         return balances
 
     def _calculate_full_balances_with_prototype(self, target_date: datetime, storage: StorageModel = None):
@@ -84,6 +98,9 @@ class BalanceService:
         # Применяем фильтры через Prototype
         all_transactions = list(self.start_service.transactions.values())
         filtered_transactions = Prototype.filter(all_transactions, filters)
+
+        LoggerService.log_debug(f"Отфильтровано {len(filtered_transactions)} транзакций до {target_date}",
+                                "balance_service")
 
         # Обрабатываем отфильтрованные транзакции
         for transaction in filtered_transactions:
@@ -133,6 +150,9 @@ class BalanceService:
         all_transactions = list(self.start_service.transactions.values())
         filtered_transactions = Prototype.filter(all_transactions, filters)
 
+        LoggerService.log_debug(f"Получено {len(filtered_transactions)} транзакций за период {start_date} - {end_date}",
+                                "balance_service")
+
         return filtered_transactions
 
     def _apply_transactions_to_balances(self, balances: dict, transactions: list):
@@ -162,10 +182,19 @@ class BalanceService:
         """
         blocking_date = self.settings_manager.settings.blocking_date
         if not blocking_date:
+            LoggerService.log_info("Дата блокировки не установлена, расчет не выполнен", "balance_service")
             return False
 
+        LoggerService.log_info(f"Расчет оборотов до даты блокировки {blocking_date}", "balance_service")
         balances = self._calculate_full_balances_with_prototype(blocking_date)
-        return self._save_balances_to_cache(balances, blocking_date)
+        result = self._save_balances_to_cache(balances, blocking_date)
+
+        if result:
+            LoggerService.log_info(f"Обороты до {blocking_date} успешно сохранены в кэш", "balance_service")
+        else:
+            LoggerService.log_error(f"Ошибка сохранения оборотов до {blocking_date} в кэш", "balance_service")
+
+        return result
 
     def _save_balances_to_cache(self, balances: dict, calculation_date: datetime):
         """
@@ -187,6 +216,7 @@ class BalanceService:
 
             return True
         except Exception as e:
+            LoggerService.log_error(f"Ошибка сохранения кэша остатков: {str(e)}", "balance_service")
             return False
 
     def _serialize_balances(self, balances: dict) -> dict:
@@ -212,6 +242,7 @@ class BalanceService:
         """
         try:
             if not os.path.exists(self.balances_file):
+                LoggerService.log_debug(f"Файл кэша {self.balances_file} не найден", "balance_service")
                 return None
 
             with open(self.balances_file, 'r', encoding='utf-8') as f:
@@ -221,12 +252,17 @@ class BalanceService:
             # Проверяем, что кэш соответствует нужной дате
             cached_date = datetime.fromisoformat(cache_data["calculation_date"])
             if cached_date != target_date:
+                LoggerService.log_debug(f"Кэш устарел: {cached_date} != {target_date}", "balance_service")
                 return None
 
             # Восстанавливаем структуру balances с использованием универсального подхода
-            return self._deserialize_balances(cache_data["balances"])
+            balances = self._deserialize_balances(cache_data["balances"])
+            LoggerService.log_debug(f"Загружен кэш остатков на {target_date} ({len(balances)} записей)",
+                                    "balance_service")
+            return balances
 
         except Exception as e:
+            LoggerService.log_error(f"Ошибка загрузки кэша остатков: {str(e)}", "balance_service")
             return None
 
     def _deserialize_balances(self, serialized_balances: dict):
@@ -249,8 +285,6 @@ class BalanceService:
                 }
 
         return balances
-
-
 
     def _find_nomenclature_by_id(self, nom_id: str):
         """
@@ -290,6 +324,8 @@ class BalanceService:
                     "calculation_date": target_date.isoformat()
                 })
 
+        LoggerService.log_info(f"Сформирован отчет по остаткам на {target_date}: {len(report_data)} позиций",
+                               "balance_service")
         return report_data
 
     def get_transactions_with_complex_filters(self, filters: list[FilterDto]):
@@ -297,12 +333,15 @@ class BalanceService:
         Получить транзакции с комплексной фильтрацией через Prototype
         """
         all_transactions = list(self.start_service.transactions.values())
-        return Prototype.filter(all_transactions, filters)
-    
-    
+        filtered_transactions = Prototype.filter(all_transactions, filters)
+        LoggerService.log_debug(f"Применены комплексные фильтры, результат: {len(filtered_transactions)} транзакций",
+                                "balance_service")
+        return filtered_transactions
+
     def handle(self, event: str, params):
         """
         Обработчик событий
         """
         if event == EventType.change_nomenclature_unit_key():
+            LoggerService.log_info("Пересчет оборотов из-за изменения справочников", "balance_service")
             self.calculate_turnovers_until_blocking_date()

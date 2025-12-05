@@ -135,11 +135,28 @@ class SettingsManager:
         if "first_start" in data:
             self.__settings.first_start = data["first_start"]
 
+        # Обработка даты блокировки
         if "blocking_date" in data and data["blocking_date"]:
             try:
-                self.__settings.blocking_date = datetime.fromisoformat(data["blocking_date"])
+                self.__settings.blocking_date = datetime.strptime(data["blocking_date"], "%Y-%m-%dT%H:%M:%S")
             except ValueError:
                 self.__settings.blocking_date = None
+
+        # Обработка настроек логирования
+        if "log_level" in data:
+            self.__settings.log_level = data["log_level"]
+
+        if "log_mode" in data:
+            self.__settings.log_mode = data["log_mode"]
+
+        if "log_directory" in data:
+            self.__settings.log_directory = data["log_directory"]
+
+        if "log_date_format" in data:
+            self.__settings.log_date_format = data["log_date_format"]
+
+        if "log_format" in data:
+            self.__settings.log_format = data["log_format"]
 
         return True
 
@@ -157,14 +174,19 @@ class SettingsManager:
                 "company": convert_factory.convert(self.__settings.company),
                 "response_format": self.__settings.response_format,
                 "first_start": self.__settings.first_start,
-                "blocking_date": self.__settings.blocking_date.isoformat() if self.__settings.blocking_date else None
+                "blocking_date": self.__settings.blocking_date.isoformat() if self.__settings.blocking_date else None,
+                "log_level": self.__settings.log_level,
+                "log_mode": self.__settings.log_mode,
+                "log_directory": self.__settings.log_directory,
+                "log_date_format": self.__settings.log_date_format,
+                "log_format": self.__settings.log_format
             }
 
             # Используем JSON форматтер для сохранения
-            json_data = json_formatter.build("json", [data])
+            # json_data = json_formatter.build("json", [data])
 
             with open(self.__file_name, "w", encoding="utf-8") as f:
-                json.dump(json_data[0], f, ensure_ascii=False, indent=2)
+                json.dump(data, f, ensure_ascii=False, indent=2)
 
             return True
         except Exception as e:
@@ -185,4 +207,9 @@ class SettingsManager:
         self.__settings.company.INN = "123456789012"
         self.__settings.response_format = "CSV"
         self.__settings.first_start = True
-        self.__settings.blocking_date = None
+        self.__settings.blocking_date = "2024-01-01T00:00:00"
+        self.__settings.log_level = "INFO"
+        self.__settings.log_mode = "FILE"
+        self.__settings.log_directory = "logs"
+        self.__settings.log_date_format = "%Y-%m-%d %H:%M:%S"
+        self.__settings.log_format = "[{level}] {timestamp} - {module}: {message}"
