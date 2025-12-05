@@ -1,13 +1,19 @@
 {
-    "company": {
-        "name": "Ромашка",
-        "account": 40702810000,
-        "correspondent_account": 30101810000,
-        "BIK": 44525225,
-        "ownership_type": "ООО",
-        "INN": 123456789012
-    },
-    "response_format": "CSV",
-    "first_start": false,
-    "blocking_date": "2024-01-01T00:00:00"
+  "company": {
+    "BIK": 44525225,
+    "INN": 123456789012,
+    "account": 40702810000,
+    "correspondent_account": 30101810000,
+    "id": "b06fa25c-8c3d-4a6d-81a0-b64b406c1607",
+    "name": "Ромашка",
+    "ownership_type": "ООО"
+  },
+  "response_format": "CSV",
+  "first_start": false,
+  "blocking_date": "2024-01-01T00:00:00",
+  "log_level": "INFO",
+  "log_mode": "FILE",
+  "log_directory": "logs",
+  "log_date_format": "%Y-%m-%d %H:%M:%S",
+  "log_format": "[{level}] {timestamp} - {module}: {message}"
 }
